@@ -21,7 +21,7 @@
     <div style="background-color: #003B46; text-align:center; font-size: 0.3cm;">
         <h1 style="color: white;">Registro</h1>
 
-    </div>
+    </div> 
 
     <div style="background-color: #c4dfe6; text-align: center;">
         <br>
@@ -39,14 +39,15 @@
             <input type="radio" name="sexo" value="Otros" id="3" /> Otros
         </p>
         <br>
-        <p>Ingrese su grupo: <input type="text" name="carrera" value="" size="6" id="grupo">*4422IS Ejemplo* </p>
+        <p>Ingrese su grupo: <input type="text" name="carrera" value="" size="6" id="grupo" spellcheck="true">*4422IS Ejemplo* </p>
 
-        <p>Acepto los Terminos de uso y la Politica de privacidad<input type="radio" name="Terminos" value=""
+        <p>Acepto los Terminos de uso y la Politica de privacidad<input type="radio" name="Terminos" value=" false"
                 id="terminosDeUso"></p>
 
         <div style="text-align: center; size: 10%;">
             <a href="home.html">
-                <input type="button" name="buscar" value="Entrar" id="Entrar" />
+                <button id="btnentrar" name="Entrar" >Entrar</button>
+               
             </a>
 
             <br>
@@ -62,11 +63,5 @@
     </div>
 
 </body>
-<script>
-
-
-
-
-</script>
-
+<script src="js/funciones.js"></script>
 </html>
