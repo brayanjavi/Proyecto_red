@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/styles.css">
+        <title>ComiColmillos</title>
+    </head>
+    <body>
+        <main>
+            <!--Encabezado-->
+            <header>
+                <div class="encabezado">  
+                    <div class="logo">  
+                        <img class="imglogo" src="assets/logo.png" alt="">        
+                        <a href="index.html"><h1>Comi<b>Colmillos</b></h1></a>
+                    </div>       
+                    <div class="menu" id="aparecerMenu">       
+                        <nav>
+                            <ul>
+                                <li class="seleccion">
+                                    <a class="textoSeleccion" href="index.html">Home</a>
+                                </li>        
+                                <li>
+                                    <a href="ayuda.html">Ayuda</a>
+                                </li>        
+                                <li>
+                                    <a href="eats.html">UPT-eats</a>
+                                </li>                               
+                                <li>
+                                    <a href="login.html">Iniciar sesión</a>
+                                </li>        
+                            </ul>
+                        </nav>       
+                    </div>
+                </div>
+                <div id="iconoMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </header>            
+            <!--Portada-->
+            <div class="portada">
+                <div class="info">
+                    <h1>Publicaciones</h1>
+                </div>
+            </div>
+            <!--Publicaciones-->
+            <div class="publicaciones">
+                <section>
+                    <article>
+                        <div class="publicacion">
+                            <a class="perfil" href="#">
+                                <img class="fotoperfil" src="assets/X4BUBLBf_400x400.jpg" alt="">
+                                <h2>Juan el perro</h2>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi dolores 
+                                laboriosam magni, soluta dicta eos enim nemo obcaecati adipisci. Placeat, officia. 
+                                Nostrum culpa sunt amet cum, at necessitatibus nulla!</p>
+                            <img src="assets/X4BUBLBf_400x400.jpg" alt="">
+                            <div class="reaccion">
+                                <img class="like" onclick="like()" src="assets/like.png" alt="">
+                                <img class="like" onclick="dislike()" src="assets/dislike.png" alt="">
+                                <input type="text" placeholder="Comentarios">
+                            </div>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="publicacion">
+                            <a class="perfil" href="#">
+                                <img class="fotoperfil" src="assets/X4BUBLBf_400x400.jpg" alt="">
+                                <h2>Pepe el medio gato</h2>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi dolores 
+                                laboriosam magni, soluta dicta eos enim nemo obcaecati adipisci. Placeat, officia. 
+                                Nostrum culpa sunt amet cum, at necessitatibus nulla!</p>
+                            <img src="assets/X4BUBLBf_400x400.jpg" alt="">
+                            <div class="reaccion">
+                                <img class="like" onclick="like()" src="assets/like.png" alt="">
+                                <img class="like" onclick="dislike()" src="assets/dislike.png" alt="">
+                                <input type="text" placeholder="Comentarios">
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <!--Relacionados-->
+                <div class="relacionados"> 
+                    <aside>
+                        <img src="assets/X4BUBLBf_400x400.jpg" alt="">
+                        <h2>juan pastor aleman</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi dolores 
+                            laboriosam magni, soluta dicta eos enim nemo obcaecati adipisci. Placeat, officia. 
+                            Nostrum culpa sunt amet cum, at necessitatibus nulla!</p>
+                        <a href="#"><button>Ver publicació</button></a>
+                        
+                    </aside>
+
+                    <aside>
+                        <img src="assets/X4BUBLBf_400x400.jpg" alt="">
+                        <h2>Maria antonieta</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi dolores 
+                            laboriosam magni, soluta dicta eos enim nemo obcaecati adipisci. Placeat, officia. 
+                            Nostrum culpa sunt amet cum, at necessitatibus nulla!</p>
+                        <a href="#"><button>Ver publicació</button></a>
+                        
+                    </aside>
+
+                    <aside>
+                        <img src="assets/X4BUBLBf_400x400.jpg" alt="">
+                        <h2>Federico Marciano</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi dolores 
+                            laboriosam magni, soluta dicta eos enim nemo obcaecati adipisci. Placeat, officia. 
+                            Nostrum culpa sunt amet cum, at necessitatibus nulla!</p>
+                        <a href="#"><button>Ver publicació</button></a>
+                        
+                    </aside>
+                </div>
+            </div>
+            <!--Pie de página-->
+            <div class="piePagina">
+                <footer>
+                    <hr>
+                    <h4>® EcologicalBoys - Todos los derechos recervados.</h4>
+                </footer>
+            </div>
+        </main>
+        <script>
+            function like(){
+                alert("diste like");
+            }
+            function dislike(){
+                alert("diste dislike");
+            }
+        </script>
+    </body>
+</html>
