@@ -6,23 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .table {
+            display: table;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+            padding: 5px;
+        }
+
+        .label {
+            text-align: right;
+        }
+    </style>
 </head>
 
 <body bgcolor="#66A5AD">
     <div style="background-color:#003B46 ; text-align:center; font-size: 0.5cm;">
         <img src="recursos/imagenes/tecatillo.png" alt="" style="width: 7%; margin-left: -90%;">
-        
+
         <div style="text-align: center;">
             <h1 style="color: white; margin-top: -3.5%;">Comi-Colmillo</h1>
         </div>
-     
-       
+
+
         <div style="text-align: right; margin-top: -6.9%;">
             <a href="iniciar_secion.html">
                 <img src="recursos/imagenes/R.png" alt="" style="width: 5%; margin-left: 90%; " id="exit">
-    
+
             </a>
-    
+
         </div>
 
     </div>
@@ -42,16 +60,22 @@
 
     </div>
 
-    <div style="background-color: #c4dfe6; text-align:center ; margin-block-start: 0%; margin-top: -1%;  ">
+    <div style="background-color: #c4dfe6; text-align:center ; margin-block-start: 0%; margin-top: -1%; margin-right: 45%; ">
         <a href="upteats.html" style="text-align: center;">
             <button style="background-color: #c4dfe6; border-color: #c4dfe6;">UPT-eats</button>
         </a>
 
     </div>
-    <div style="background-color: #c4dfe6; text-align:right ; margin-top: -1.5%;">
+    <div style="background-color: #c4dfe6; text-align:right ; margin-top: -1.5%; margin-right: 35%; ">
         <a href="uptjuegos.html" style="text-align:right; ">
             <button style="background-color: #c4dfe6; border-color: #c4dfe6;">UPT-Juegos </button>
         </a>
+    </div>
+    <div style="background-color: #c4dfe6; text-align:right ; margin-top: -1.5%; margin-right: 5%;">
+        <a href="uptayuda.html" style="text-align:right; ">
+            <button style="background-color: #c4dfe6; border-color: #c4dfe6;">UPT-Ayuda </button>
+        </a>
+
     </div>
 
     <div style="text-align: center;">
@@ -92,6 +116,11 @@
             </div>
 
         </div>
+        <div style="text-align: right; ">
+            <button id="click" >Crear publicacion</button>
+
+
+        </div>
         <div style="background-color:#003B46 ; text-align: center;">
             <div>
                 <br>
@@ -99,7 +128,19 @@
                 <br>
             </div>
         </div>
+<section>
+    <div id="publi">
+
+    </div>
+</section>
+
 </body>
+
+<script>
+    document.getElementById("click").onclick = handleButtonPress;
+    document.getElementById("publi")
+    
+</script>
 <script src="js/funciones.js"></script>
 
 </html>
