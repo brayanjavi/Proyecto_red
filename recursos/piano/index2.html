@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano_Tiles</title>
+</head>
+
+<body style="background-image: url(img/Piano.png); background-repeat: no-repeat; background-size: cover;">
+
+    <div>
+        <select align="center;" id="eleccion" name="menu" style="width:150px; height:30px; ">
+            <option value="0" select></option>
+            <option value="1"> Stay Aweke</option>
+            <option value="2"> blossom</option>
+            <option value="3"> Air</option>
+        </select>
+    </div>
+    <div style="text-align:left; margin-top: 8%; ">
+
+        <audio id="musicHome" controls preload="auto" autoplay="autoplay"
+            src="musica/I_S_A_B_E_L/1.-I/BJMO_IMAGINATE.wav"></audio>
+
+
+    </div>
+
+    <div style="text-align:left; margin-top: 1%;">
+        <button id="iniciar" style="background-color: #ffffff; color: rgb(0, 0, 0); border-radius: 5px; padding: 10px;">
+            iniciar </button>
+
+    </div>
+
+
+
+    <div style="bottom: 0; width: 100%;">
+        <img id="personaje" src="img/piano2.png"
+            style="top: -12%; left: 10%; right: 10%; width: 20%; height: 20%; position: fixed; z-index: 3; margin-top: 47.5%;">
+    </div>
+
+</body>
+<script>
+
+    var eleccion = document.getElementById("eleccion");
+    var empezar = document.getElementById("iniciar");
+    var music = document.getElementById('musicHome');
+    var musi = document.createElement('audio');
+
+
+    alert("Bienvenido \n Para poder jugar las intrucciones son : \n 1.- Seleccione la cancion \n 2.-Ponga Play ala cancion \n 3.Precione el boton iniciar ,para comenzar el juego \n Gracias!!!");
+   
+
+    eleccion.addEventListener('change', function () {
+        var eleccion = document.getElementById("eleccion");
+        var music = document.getElementById('musicHome');
+        switch (eleccion) {
+            case 1:
+                music.src = "musica/I_S_A_B_E_L/2.-S/BJMO-STAY AWEKE.wav";
+                break;
+            case 2:
+                music = "musica/I_S_A_B_E_L/4.-B/BJMO_IS_B.mp3";
+                break;
+            case 3:
+                music = "musica/I_S_A_B_E_L/3.-A/BJMO_IS_A.mp3";
+                break;
+        }
+
+    });
+    //-------------------
+    //empezar el juego con e button
+    //-------------------
+
+    empezar.addEventListener('click', function () {
+
+
+
+        var puntaje = 0;
+        var nObjetos = 5;
+        var personaje = document.getElementById("personaje");
+        var posicionX = 0;
+        var posicionY = 0;
+        var velocidad = 50;
+        var velocidadBasura = 10;
+        var direccion = "derecha";
+        var intervalo;
+        var tecla = "";
+        var teclaPulsada = false;
+
+        var ancho = window.innerWidth;
+        var alto = window.innerHeight;
+
+        lluviaNotas();
+
+        document.onkeydown = function (e) {
+            tecla = e.keyCode;
+            teclaPulsada = true;
+
+            if (tecla == 39) {
+
+                personaje.style.transform = "scaleX(1)";
+                direccion = "derecha";
+                console.log("derecha");
+
+            } else if (tecla == 37) {
+
+                personaje.style.transform = "scaleX(-1)";
+                direccion = "izquierda";
+                console.log("izquierda");
+            } else {
+                return false;
+            }
+            moverPersonaje();
+        }
+
+        function moverPersonaje() {
+
+            if (direccion == "derecha") {
+                posicionX += velocidad;
+            } else {
+                posicionX -= velocidad;
+            }
+            personaje.style.left = posicionX + "px";
+            verificarLimites();
+        }
+
+        function verificarLimites() {
+            if (posicionX > window.innerWidth - personaje.width) {
+                posicionX = window.innerWidth - personaje.width;
+            } else if (posicionX < 0) {
+                posicionX = 0;
+            }
+        }
+
+
+        function lluviaNotas() {
+
+            intervalo = setInterval(function () {
+                nObjetos--;
+                if (nObjetos >= 0) {
+                    crearBasura();
+                } else {
+                    clearInterval(intervalo);
+                }
+            }, 1000);
+
+        }
+
+        function moverObjeto(objeto) {
+            var posicionY = 0;
+            var direccion = "derecha";
+            var intervalo;
+            var tecla = "";
+            var teclaPulsada = false;
+            var limite = window.innerHeight - objeto.height;
+            intervalo = setInterval(function () {
+
+                posicionY += velocidadBasura;
+                objeto.style.top = posicionY + "px";
+
+                if (posicionY > limite) {
+                    posicionY = 0;
+                    objeto.style.top = posicionY + "px";
+                }
+
+
+                if (objeto.offsetTop + objeto.height > personaje.offsetTop && objeto.offsetTop < personaje.offsetTop + personaje.height && objeto.offsetLeft + objeto.width > personaje.offsetLeft && objeto.offsetLeft < personaje.offsetLeft + personaje.width) {
+
+                    document.body.removeChild(objeto);
+                    puntaje++;
+
+                    if (puntaje == 20) {
+                        alert("Ganaste");
+                        clearInterval(intervalo);
+                    } else {
+                        lluviaNotas();
+                        clearInterval(intervalo);
+                    }
+                }
+
+            }, 70);
+        }
+
+
+        function crearBasura() {
+
+            var posicionX = Math.floor(Math.random() *   (ancho - 287));
+            var objeto = document.createElement("img");
+            objeto.src = "img/notas/R (1).png";
+            objeto.style.position = "absolute";
+            objeto.style.width = "5%";
+            objeto.style.height = "5%";
+            objeto.style.top = "0";
+            objeto.style.left = posicionX + "px";
+            objeto.style.zIndex = "5";
+            document.body.appendChild(objeto);
+            moverObjeto(objeto);
+
+            var posicionX = Math.floor(Math.random() * (ancho - 287));
+            var objeto = document.createElement("img");
+            objeto.src = "img/notas/R.png";
+            objeto.style.position = "absolute";
+            objeto.style.width = "5%";
+            objeto.style.height = "5%";
+            objeto.style.top = "0";
+            objeto.style.left = posicionX + "px";
+            objeto.style.zIndex = "2";
+            document.body.appendChild(objeto);
+            moverObjeto(objeto);
+
+            var posicionX = Math.floor(Math.random() * (ancho - 287));
+            var objeto = document.createElement("img");
+            objeto.src = "img/notas/R (2).png";
+            objeto.style.position = "absolute";
+            objeto.style.width = "5%";
+            objeto.style.height = "5%";
+            objeto.style.top = "0";
+            objeto.style.left = posicionX + "px";
+            objeto.style.zIndex = "2";
+            document.body.appendChild(objeto);
+            moverObjeto(objeto);
+        }
+
+
+
+
+
+
+    });
+
+
+
+
+
+</script>
+
+
+</html>

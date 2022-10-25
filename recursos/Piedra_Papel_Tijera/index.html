@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra_Papel</title>
+
+</head>
+
+<body bgcolor="black">
+
+    <div style="text-align:center;">
+        <h1 align=center style="color: rgb(255, 255, 255);">Piedra Papel o Tijera </h1>
+
+    </div>
+
+    <div style="text-align: center;">
+
+        <tr>
+            <td>
+                <font color="white" align=center>Escoge:
+            </td>
+            <td>
+                <select align="center;" id="eleccion" name="menu" style="width:150px; height:30px; ">
+                    <option value="0" select></option>
+                    <option value="1"> Piedra</option>
+                    <option value="2"> Papel</option>
+                    <option value="3"> Tijera</option>
+                </select>
+            </td>
+    
+        </tr>
+        
+        <br>
+        
+    </div>
+    <a href=""></a>
+
+    <div style="text-align: center;">
+        <img id="img" src="Recursos/giphy (50).gif" style="margin-top: 2%; width: 25%; height: 20%;">
+        <img src="" href="" alt="">
+    </div>
+    
+</body>
+
+<script>
+    //--------------------------var ala eleccion
+    var seleccion = document.getElementById("eleccion");
+    var num = 0;
+    //-------------------------Metodo de seleccion
+    seleccion.addEventListener("change", function () {
+        var eleccion = document.getElementById("eleccion");
+        var eleccion = eleccion.value;
+        if (eleccion.value = 0) 
+        {
+          return false;    
+        }
+
+        var img = document.getElementById("img");
+        cambiarImagenAleatoria(eleccion);
+
+
+    });
+
+    //----------------------
+    function ganadores(eleccion, numero) {
+        
+        if (eleccion == numero) {
+            alert("Empate");
+        } else if (eleccion == 1 && numero == 2) {
+            alert("Perdiste");
+        } else if (eleccion == 1 && numero == 3) {
+            alert("Ganaste");
+        } else if (eleccion == 2 && numero == 1) {
+            alert("Ganaste");
+        } else if (eleccion == 2 && numero == 3) {
+            alert("Perdiste");
+        } else if (eleccion == 3 && numero == 1) {
+            alert("Perdiste");
+        } else if (eleccion == 3 && numero == 2) {
+            alert("Ganaste");
+        }
+
+        alert("1.piedra\n2.Papel\n3.tijeras" + "\nel numero elegido es: " + numero);
+
+    }
+
+
+    function resetear() {
+        var eleccion = document.getElementById("eleccion");
+        var eleccion = eleccion.value;
+        var img = document.getElementById("img");
+        img.src = "Recursos/giphy (50).gif";
+    }
+
+    function cambiarImagen(numero) {
+
+switch (numero) {
+    case 1:
+        img.src = "Recursos/piedra.gif";
+        break;
+    case 2:
+        img.src = "Recursos/papel.gif";
+        break;
+    case 3:
+        img.src = "Recursos/tijera.gif";
+        break;
+}
+}
+
+function cambiarImagenAleatoria(eleccion) {
+let contador = 0;       
+var intervalo = setInterval(function () {           
+    var numero = Math.floor(Math.random() * 3)+1;
+    cambiarImagen(numero);
+    contador++;
+    if (contador == 50) {
+        setTimeout(function () {
+            ganadores(eleccion, numero);
+            resetear();
+        }, 100);
+        clearInterval(intervalo);
+    }
+}, 100);
+}
+
+
+
+</script>
+
+</html>
